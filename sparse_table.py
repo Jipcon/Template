@@ -1,6 +1,3 @@
-import time
-import numpy as np
-
 class SparseTable:
     def __init__(self,a,op):
         n=len(a)
