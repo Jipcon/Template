@@ -1,4 +1,4 @@
-#灵神模板整理:
+#灵神模板整理:https://github.com/Jipcon/Template.git
 class NumArray:
     __slots__ = 'nums', 'tree'
 

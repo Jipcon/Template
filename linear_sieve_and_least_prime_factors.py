@@ -1,3 +1,4 @@
+#灵神模板整理:https://github.com/Jipcon/Template.git
 MX = 10 ** 6 + 1
 prime = []
 LPF = [0] * MX
@@ -17,7 +18,6 @@ for i in range(2, MX):
             LPF[i] = p
             break
 prime.extend((MX, MX))
-
 
 
 PRIME_FACTORS=[[] for _ in range(MX)] #质因子

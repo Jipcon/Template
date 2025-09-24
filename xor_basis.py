@@ -1,3 +1,4 @@
+#灵神模板整理:https://github.com/Jipcon/Template.git
 class XorBasis:
     def __init__(self,n):
         self.b=[0]*n

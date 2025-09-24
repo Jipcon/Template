@@ -1,5 +1,5 @@
 from math import inf
-
+#灵神模板整理:https://github.com/Jipcon/Template.git
 def dijkstra(graph: list[list[int]]) -> list[list[int]]:
     n=len(graph)
     g = [[inf for _ in range(n)] for _ in range(n)]  # 邻接矩阵

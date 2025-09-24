@@ -1,3 +1,4 @@
+#灵神模板整理:https://github.com/Jipcon/Template.git
 # 在文本串 text 中查找模式串 pattern，返回所有成功匹配的位置（pattern[0] 在 text 中的下标）
 def kmp(text: str, pattern: str):
     m = len(pattern)

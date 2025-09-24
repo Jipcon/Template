@@ -1,4 +1,4 @@
-#
+#灵神模板整理:https://github.com/Jipcon/Template.git#
 class LcaBinaryLifting:
     def __init__(self, edges):
         n = len(edges) + 1

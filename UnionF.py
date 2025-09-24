@@ -1,3 +1,4 @@
+#灵神模板整理:https://github.com/Jipcon/Template.git
 class UnionFind:
     def __init__(self, n: int):
         self._fa = list(range(n))
