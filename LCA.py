@@ -1,3 +1,4 @@
+#
 class LcaBinaryLifting:
     def __init__(self, edges):
         n = len(edges) + 1
@@ -35,20 +36,17 @@ class LcaBinaryLifting:
                 node = self.pa[node][i]
         return node
 
-    # 返回 x 和 y 的最近公共祖先
     def get_lca(self, x: int, y: int) -> int:
         if self.depth[x] > self.depth[y]:
             x, y = y, x
-        # 使 y 和 x 在同一深度
         y = self.get_kth_ancestor(y, self.depth[y] - self.depth[x])
         if y == x:
             return x
         for i in range(self.m - 1, -1, -1):
             px, py = self.pa[x][i], self.pa[y][i]
             if px != py:
-                x, y = px, py  # 同时往上跳 2**i 步
+                x, y = px, py
         return self.pa[x][0]
 
-    # 返回 x 到 y 的距离（最短路长度）
     def get_dis(self, x: int, y: int) -> int:
         return self.dis[x] + self.dis[y] - self.dis[self.get_lca(x, y)] * 2

@@ -16,11 +16,11 @@ def dijkstra(graph: list[list[int]]) -> list[list[int]]:
             if not ok and (x < 0 or dis[i] < dis[x]):
                 x = i
         if x < 0:
-            return res  # 最后一次算出的最短路就是最大的
-        if dis[x] == inf:  # 有节点无法到达
+            return res
+        if dis[x] == inf:
             return -1
-        res = dis[x]  # 求出的最短路会越来越大
-        done[x] = True  # 最短路长度已确定（无法变得更小）
+        res = dis[x]
+        done[x] = True
         for y, d in enumerate(g[x]):
             # 更新 x 的邻居的最短路
             dis[y] = min(dis[y], dis[x] + d)

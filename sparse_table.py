@@ -1,3 +1,4 @@
+#灵神模板整理:
 class SparseTable:
     def __init__(self,a,op):
         n=len(a)
@@ -5,7 +6,7 @@ class SparseTable:
         st=[[0]*n for _ in range(w)]
         st[0]=a[:]
         for i in range(1,w):
-            for j in range(n-(1<<(i-1))):
+            for j in range(n-(1<<i)+1):
                 st[i][j]=op(st[i-1][j],st[i-1][j+(1<<(i-1))])
         self.st=st
         self.op=op

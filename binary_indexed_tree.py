@@ -1,3 +1,4 @@
+#灵神模板整理:
 class NumArray:
     __slots__ = 'nums', 'tree'
 
