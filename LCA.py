@@ -1,4 +1,5 @@
 #灵神模板整理:https://github.com/Jipcon/Template.git#
+#树上倍增,最近公共祖先
 class LcaBinaryLifting:
     def __init__(self, edges):
         n = len(edges) + 1

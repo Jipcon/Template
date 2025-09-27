@@ -1,7 +1,7 @@
 #灵神模板整理:https://github.com/Jipcon/Template.git
 class NumArray:
     __slots__ = 'nums', 'tree'
-
+    #树状数组
     def __init__(self, nums):
         n = len(nums)
         self.nums = [0] * n
