@@ -95,3 +95,50 @@ class LazySegmentTree:
     def _merge_todo(self,a,b):
         return a+b
 
+    #把懒标记作用到node子树上
+    def _apply(self,node,left,right,todo):
+        cur=self._tree[node]
+        cur.val+=todo*(right-left+1)
+        cur.todo=self._merge_todo(todo,cur.todo)
+
+    #把当前节点的懒标记下传给左右儿子
+    def _spread(self,node,left,right):
+        todo=self._tree[node].todo
+        if todo==self._TODO_INIT:
+            return
+        mid=(left+right)>>1
+        self._apply(node*2,left,mid,todo)
+        self._apply(node*2+1,mid+1,right,todo)
+        self._tree[node].todo=self._TODO_INIT
+
+    def _update(self,node,left,right,ql,qr):
+        if ql<=left and qr>=right:
+            self._apply(node,left,right)
+            return
+        self._spread(node,left,right)
+        mid=(left+right)>>1
+        if ql<=mid:
+            self._update(node*2,left,mid,ql,qr)
+        if qr>mid:
+            self._update(node*2+1,mid+1,right,ql,qr)
+        self._maintain(node)
+
+    def _query(self,node,left,right,ql,qr):
+        if ql<=left and qr>=right:
+            return self._tree[node].val
+        self._spread(node,left,right)
+        mid=(left+right)>>1
+        if qr<=mid:
+            return self._query(node*2,left,mid,ql,qr)
+        if ql>mid:
+            return self._query(node*2+1,mid+1,right,ql,qr)
+        l_res=self._query(node*2,left,mid,ql,qr)
+        r_res=self._query(node*2+1,mid+1,right,ql,qr)
+        return self._merge_val(l_res,r_res)
+
+    #用f更新[ql,qr]中的每个a[i]
+    def update(self,ql,qr,f):
+        self._update(1,0,self._n-1,ql,qr,f)
+
+    def query(self,ql,qr):
+        return self._query(1,0,self._n-1,ql,qr)
