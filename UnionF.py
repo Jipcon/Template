@@ -5,12 +5,12 @@ class UnionFind:
         self._size = [1] * n
         self.cc = n
 
-    def find(self, x: int) -> int:
+    def find(self, x: int) -> int: #寻根
         if self._fa[x] != x:
             self._fa[x] = self.find(self._fa[x])
         return self._fa[x]
 
-    def is_same(self, x: int, y: int) -> bool:
+    def is_same(self, x: int, y: int) -> bool: #两个节点拥有共同的祖先
         return self.find(x) == self.find(y)
 
     def merge(self, from_: int, to: int) -> bool:
